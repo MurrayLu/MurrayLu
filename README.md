@@ -1,29 +1,30 @@
 # Murray Lu
 
-AI 協作軟體開發（AI-assisted Software Development）｜需求分析｜API 整合｜工程驗證
+以需求分析、系統規劃與 AI 協作方式開發個人軟體專案。通常先釐清問題、討論架構與模組、定義規格及驗收方式，再由 AI 協助實作，透過實際執行和測試持續調整。
 
-將需求拆成可實作的功能與驗收條件，透過 AI 協作、程式碼審查與測試迭代。以下提供實際來源程式的可執行切片、來源 Commit SHA、架構、操作步驟與已知限制。
+## Projects
 
-## 01 · [Mahjong Friends](https://github.com/MurrayLu/mahjong-friends)
+### 01 · [Mahjong Friends](https://github.com/MurrayLu/mahjong-friends)
+**麻將戰績管理網站｜React · TypeScript · Hono · Cloudflare Workers / D1**
 
-麻將戰績管理網站：React → Hono API → 群組授權與結算規則 → SQL。展示完整結算與排行榜流程，並驗證非法寫入拒絕及交易回滾。
+從朋友的記分需求開始，逐步增加結算、群組、排行榜和互動功能。公開程式提供前端、API、業務邏輯及 SQL 整合流程。
 
-技術：TypeScript、React、Hono、SQLite；原始 Cloudflare 邊界以本機 adapter 隔離。
+**[Live Website](https://mahjongfriend.twsites.workers.dev/)** · [Source & Local Demo](https://github.com/MurrayLu/mahjong-friends)
 
-## 02 · [Trading System](https://github.com/MurrayLu/trading-system)
+### 02 · [Trading System](https://github.com/MurrayLu/trading-system)
+**即時行情與交易執行系統｜C# · .NET · WPF**
 
-即時行情與交易執行系統（MuNTrade）：合成行情經事件匯流排（Event Bus）、風控門檻與 Paper Gateway，驗證委託、觸價成交與持倉更新。
+原始系統涉及券商 API、行情處理、風控與交易執行。公開版本擷取事件處理與 Paper 下單核心，提供合成行情的離線驗證；不連接真實券商。
 
-技術：C#、.NET、WPF、事件處理。公開桌面是新建隔離展示（Isolated Demo），不是原始 WPF 介面；不連券商。
+### 03 · [Backtesting & Research](https://github.com/MurrayLu/backtesting-research)
+**策略回測與市場研究系統｜C# · .NET · WPF · SQLite**
 
-## 03 · [Backtesting & Research](https://github.com/MurrayLu/backtesting-research)
+由策略歷史回測延伸出獨立研究工作台。公開版本展示交易模擬、帳務處理及資料可得時間驗證，使用合成資料重現部分流程。
 
-策略回測與市場研究平台（BacktestEngine）：回測引擎使用實際撮合與會計主線；獨立研究入口以只讀 SQLite 與可得時間（AvailableAt）規則查詢證據。
+## About the public code
 
-技術：C#、.NET、WPF、SQLite、確定性回放（Deterministic Replay）。公開 CLI 與縮減工作台使用合成資料，工作台明示 Isolated Demo。
+交易與研究原始系統依賴未公開的本地資料庫、市場資料與特定執行環境；公開 Repository **不是完整原始系統**，而是保留部分來源程式的可執行精選切片（Isolated Demo）。兩個公開 WPF 視窗亦非原始桌面介面。
 
-## 角色與協作方式
+這些專案由我提出需求、決定方向、討論架構與規格，並審查功能和驗收結果；Codex 等 AI 工具參與架構細節及大部分程式實作。不主張程式碼全部由本人手寫。
 
-本人選定作品與公開範圍並核准發布；本次 AI 協助讀碼、擷取、隔離展示、測試與文件。不主張全部獨立手寫或精確手寫比例；原始專案的精確分工與歷史 AI 使用情形未在本次查核。各 repository 清楚區分來源碼、調整碼與新建展示碼，不將切片驗收當作完整原系統驗證。
-
-本次沒有公開原系統截圖、正式資料、交易紀錄、帳號、憑證、私有策略或原始 Git 歷史。公開供技術審查，未另行授予開源授權。
+各 Repository 均附執行方式、測試範圍、來源對照與已知限制。公開供閱讀及技術審查，未另行授予開源授權。
